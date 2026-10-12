@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#123b2e">
+  <meta name="description" content="OCD — Les Opportunités C'est Dehors. Découvre des opportunités et passe à l'action.">
+  <title>OCD — Les Opportunités C'est Dehors</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <div class="announcement">LES OPPORTUNITÉS C'EST DEHORS <span>•</span> OSE, AGIS, AVANCE</div>
+  <header class="site-header">
+    <a class="brand" href="#" data-view="home" aria-label="Accueil OCD">
+      <span class="brand-mark">OCD</span>
+      <span class="brand-copy"><b>LES OPPORTUNITÉS</b><small>C'EST DEHORS</small></span>
+    </a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Ouvrir le menu">☰</button>
+    <nav id="mainNav">
+      <a href="#opportunites" data-view="home">Opportunités</a>
+      <a href="#comment" data-view="home">Comment ça marche</a>
+      <button class="nav-login" id="navLogin">Connexion</button>
+      <button class="btn btn-small" id="navJoin">Rejoindre OCD <span>↗</span></button>
+    </nav>
+  </header>
+
+  <main>
+    <section id="homeView" class="view">
+      <section class="hero">
+        <div class="hero-glow"></div>
+        <div class="hero-content">
+          <div class="eyebrow"><span class="pulse"></span> LE MOUVEMENT DES JEUNES QUI AGISSENT</div>
+          <h1>Les opportunités<br>ne t'attendent pas.<br><em>Va les chercher.</em></h1>
+          <p>Rejoins une communauté de jeunes Africains, découvre des opportunités adaptées à ton profil et passe à l'action.</p>
+          <div class="hero-actions">
+            <button class="btn" id="heroJoin">Créer mon profil <span>↗</span></button>
+            <a class="btn btn-ghost" href="#opportunites">Explorer les opportunités <span>↓</span></a>
+          </div>
+          <div class="hero-proof"><span class="proof-icon">✦</span><span>Ton pays. Tes compétences. Tes prochaines opportunités.</span></div>
+        </div>
+        <div class="hero-art" aria-label="Illustration de la communauté OCD">
+          <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+          <div class="art-card card-top"><span class="art-dot"></span><div><b>Ton prochain départ</b><small>Commence ici</small></div><span class="arrow">↗</span></div>
+          <div class="art-core"><span>OCD</span><small>À VIE.</small></div>
+          <div class="art-card card-bottom"><span class="check-circle">✓</span><div><b>Profil prêt</b><small>Les opportunités te trouvent</small></div></div>
+          <div class="floating-tag tag-one">AFRIQUE EN ACTION</div>
+          <div class="floating-tag tag-two">#OCD</div>
+        </div>
+        <div class="hero-bottom"><span>01 / L'AMBITION</span><span>02 / L'ACTION</span><span>03 / L'OPPORTUNITÉ</span></div>
+      </section>
+
+      <section class="section intro" id="comment">
+        <div class="section-kicker">LE PRINCIPE OCD</div>
+        <div class="intro-grid">
+          <h2>Ne reste pas<br>à attendre.<br><em>Entre en action.</em></h2>
+          <div><p class="large-copy">OCD, c'est un espace pour connecter les jeunes aux opportunités qui correspondent à leur réalité.</p><p>Complète ton profil une seule fois. Quand une mission ou une offre correspond à ton pays, à ton secteur et à tes compétences, elle ressort en priorité pour toi.</p><button class="text-link" id="introJoin">Je rejoins le mouvement <span>↗</span></button></div>
+        </div>
+        <div class="steps-grid">
+          <article class="step-card"><span class="step-no">01</span><div class="step-icon">↗</div><h3>Inscris-toi</h3><p>Crée ton compte et renseigne ton profil pour que les bonnes opportunités te reconnaissent.</p></article>
+          <article class="step-card"><span class="step-no">02</span><div class="step-icon">◎</div><h3>Découvre</h3><p>Consulte les offres disponibles et vois celles qui correspondent à ton pays et à ton secteur.</p></article>
+          <article class="step-card"><span class="step-no">03</span><div class="step-icon">✦</div><h3>Candidate</h3><p>Postule aux opportunités qui te conviennent et suis l'évolution de tes candidatures.</p></article>
+        </div>
+      </section>
+
+      <section class="section opportunities-section" id="opportunites">
+        <div class="section-heading">
+          <div><div class="section-kicker">LE PROCHAIN PAS</div><h2>Des opportunités.<br><em>Du concret.</em></h2></div>
+          <button class="text-link" id="seeAll">Voir toutes les offres <span>↗</span></button>
+        </div>
+        <div id="homeOpportunities" class="opportunity-grid"><div class="loading-card">Chargement des opportunités…</div></div>
+      </section>
+      <section class="join-banner"><div><div class="section-kicker">TON HISTOIRE COMMENCE MAINTENANT</div><h2>Une OCD ne reste pas<br>les bras croisés.</h2></div><button class="btn btn-light" id="bannerJoin">Je crée mon profil <span>↗</span></button></section>
+    </section>
+
+    <section id="authView" class="view hidden">
+      <div class="auth-layout">
+        <div class="auth-side"><div class="section-kicker">BIENVENUE DANS LE MOUVEMENT</div><h1>Les opportunités<br>sont dehors.<br><em>Et toi aussi.</em></h1><p>Crée ton profil et donne aux opportunités la chance de te trouver.</p><div class="auth-stamp">OCD<br><small>À VIE.</small></div></div>
+        <div class="auth-panel">
+          <div class="auth-tabs"><button class="auth-tab active" data-auth="signup">Créer un compte</button><button class="auth-tab" data-auth="login">Connexion</button></div>
+          <form id="authForm">
+            <h2 id="authTitle">Rejoins OCD</h2><p id="authSubtitle">Quelques informations pour commencer.</p>
+            <div id="signupFields">
+              <label>Nom complet<input name="full_name" autocomplete="name" placeholder="Ex. : Amina Kossi" required></label>
+              <div class="form-row"><label>Âge<input name="age" type="number" min="16" max="100" placeholder="18" required></label><label>Pays<select name="country" id="authCountry" required></select></label></div>
+              <label>Ville<input name="city" placeholder="Ex. : Cotonou" required></label>
+              <label>Téléphone / WhatsApp<input name="phone" type="tel" placeholder="+229 00 00 00 00" required></label>
+            </div>
+            <label>Adresse e-mail<input name="email" type="email" autocomplete="email" placeholder="toi@exemple.com" required></label>
+            <label>Mot de passe<input name="password" type="password" autocomplete="new-password" minlength="8" placeholder="8 caractères minimum" required></label>
+            <button class="btn btn-full" type="submit" id="authSubmit">Créer mon compte <span>↗</span></button>
+            <p class="form-note">En continuant, tu acceptes que tes informations soient utilisées pour gérer ton profil et tes candidatures OCD.</p>
+            <div id="authMessage" class="message" role="status"></div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section id="dashboardView" class="view hidden">
+      <div class="dashboard-shell">
+        <aside class="dash-sidebar">
+          <div class="dash-user"><div class="avatar" id="userAvatar">O</div><div><b id="sideName">Mon espace</b><small id="sideCountry">Membre OCD</small></div></div>
+          <button class="dash-link active" data-tab="recommended">✦ <span>Pour moi</span></button>
+          <button class="dash-link" data-tab="all">▦ <span>Toutes les opportunités</span></button>
+          <button class="dash-link" data-tab="applications">✓ <span>Mes candidatures</span></button>
+          <button class="dash-link" data-tab="profile">◎ <span>Mon profil</span></button>
+          <div class="sidebar-bottom"><span class="mini-brand">OCD • À VIE</span><button id="logoutBtn" class="logout-link">↗ Déconnexion</button></div>
+        </aside>
+        <div class="dash-main">
+          <div class="dash-top"><div><div class="section-kicker">TON ESPACE OCD</div><h1 id="dashTitle">Les opportunités pour toi.</h1></div><div class="member-chip"><span></span> MEMBRE OCD</div></div>
+          <div id="dashContent"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="adminView" class="view hidden">
+      <div class="admin-shell">
+        <div class="admin-top"><div><div class="section-kicker">ESPACE SÉCURISÉ</div><h1>Administration <em>OCD.</em></h1><p>Gère les opportunités et les candidatures de la communauté.</p></div><button class="btn btn-ghost" id="adminBack">Retour au site ↗</button></div>
+        <div class="admin-stats" id="adminStats"></div>
+        <div class="admin-tabs"><button class="active" data-admin-tab="offers">Opportunités</button><button data-admin-tab="applications">Candidatures</button><button data-admin-tab="members">Membres</button></div>
+        <div id="adminContent"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer"><a class="brand footer-brand" href="#"><span class="brand-mark">OCD</span><span class="brand-copy"><b>LES OPPORTUNITÉS</b><small>C'EST DEHORS</small></span></a><p>Le mouvement des jeunes qui passent à l'action.</p><span>© <span id="year"></span> OCD. Tous droits réservés.</span></footer>
+
+  <div class="modal hidden" id="offerModal" role="dialog" aria-modal="true" aria-labelledby="offerModalTitle"><div class="modal-backdrop" data-close-modal></div><div class="modal-card"><button class="modal-close" data-close-modal aria-label="Fermer">×</button><div id="offerModalContent"></div></div></div>
+  <div class="toast" id="toast" role="status"></div>
+</body>
+</html>
